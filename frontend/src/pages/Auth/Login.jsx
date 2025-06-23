@@ -27,6 +27,14 @@ const Login = () => {
             label="Email Address"
             placeholder="john@example.com"
           />
+          <Input
+            type="password"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+            label="Password"
+            placeholder="Min 8 Characters"
+          />
+          {error && <p className="">{error}</p>}
         </form>
       </div>
     </AuthLayout>
