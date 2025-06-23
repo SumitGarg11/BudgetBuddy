@@ -1,5 +1,11 @@
 import React from "react";
-import { Navigate, Route, Router, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+
 import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
 import Home from "./pages/Dashboard/Home";
@@ -7,18 +13,20 @@ import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
 
 const App = () => {
-  return <div className=""> 
-  <Router>
-    <Routes>
-      <Route path="/" element={<Root />} />
-      <Route path="/login" exact element={<Login/>} />
-      <Route path="/signUp" exact  element={<SignUp/>} />
-      <Route path="/dashboard" exact  element={<Home/>} />
-      <Route path="/income" exact  element={<Income/>} />
-      <Route path="/expense" exact  element={<Expense/>} />
-    </Routes>
-  </Router>
-  </div>;
+  return (
+    <div className="">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Root />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/income" element={<Income />} />
+          <Route path="/expense" element={<Expense />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 };
 
 export default App;
@@ -27,7 +35,11 @@ const Root = () => {
   // check if token exits in localStorage
 
   const isAuthenticated = !!localStorage.getItem("token");
-  // redirect to dashboard if authenticated, otherwise to login 
+  // redirect to dashboard if authenticated, otherwise to login
 
-  return isAuthenticated ? (<Navigate to="/dashboard" />) : ( <Navigate to="/login" /> )
-}
+  return isAuthenticated ? (
+    <Navigate to="/dashboard" />
+  ) : (
+    <Navigate to="/login" />
+  );
+};
